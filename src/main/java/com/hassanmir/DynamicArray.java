@@ -13,7 +13,7 @@ public class DynamicArray<E> {
     }
 
     public DynamicArray(){
-        new DynamicArray(1);
+        new DynamicArray<E>(1);
     }
 
     public int size(){
@@ -33,9 +33,7 @@ public class DynamicArray<E> {
         if(size==capacity){
             capacity *=2;
             E[] array2 = (E[]) new Object[capacity];
-            for(int i=0;i<size;i++){
-                array2[i]=array[i];
-            }
+            if (size >= 0) System.arraycopy(array, 0, array2, 0, size);
             array2[size]=element;
             array=array2;
         }else{
